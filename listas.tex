@@ -1,0 +1,1279 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{estilosexercicios}
+\usepackage{hyperref}
+
+%\usepackage[bottom=2cm,top=3cm,left=3cm,right=2cm]{geometry}
+%\usepackage[utf8]{inputenc}
+%Environments para esta lista
+% ---------------------------------------------------
+\definecolor{Floresta}{rgb}{0.13,0.54,0.13}
+\newcommand{\exercicio}[1]{\section*{Exercício #1} \textcolor{blue}{\bf(#1)}}
+\newcommand{\dividiritens}[1]{\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1) #1 \end{tasks}}
+\newcommand{\pers}[1]{\textcolor{Floresta}{$\negrito{(#1)} $}}
+
+\newcommand{\solucao}[1]{\begin{mdframed}[style=MyFrame]
+\textbf{\textcolor{red}{Solução:}} #1
+\end{mdframed}\textcolor{white}{Oi} \newline}
+\newcommand{\figura}[1]{\input Arquivos_de_figs_Exercicios/#1} %Adicionar figuras do latex
+
+% ---------------------------------------------------
+\title{Equações de Derivadas Parciais}
+\author{MAP0413}
+\date{1º semestre de 2019}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+
+\section{\textcolor{Floresta}{Lista 1}}
+
+
+\exercicio{1}
+\dividiritens{
+\task[\pers{a}] Considere o problema
+\[
+\left\{\begin{array}{c}
+xu_t + u_x = 0 \\
+u(0,x) = f(x)
+\end{array}
+\right.
+\]
+
+Em quais pontos da curva inicial o teorema de existência e unicidade não se
+aplica?
+\task[\pers{b}]
+Verifique que o problema
+\[
+\left\{\begin{array}{c}
+xu_t + u_x = 0 \\
+u(0,x) = \sen(x)
+\end{array}
+\right.
+\]
+não tem solução definida em todo o $\mathbb{R}^2$ e que o problema
+\[
+\left\{\begin{array}{c}
+xu_t + u_x = 0 \\
+u(0,x) = \cos(x)
+\end{array}
+\right.
+\]
+tem infinitas soluções definidas em todo o $\mathbb{R}^2.$
+}
+
+\medskip
+\noindent
+\solucao{
+a)
+
+\medskip
+\noindent
+A curva das condições iniciais é dada por:
+\[
+\begin{cases}
+    \alpha(r)=0 \\
+    \beta(r)=r
+\end{cases}
+\]
+
+\medskip
+\noindent
+Os coeficientes $a$ e $b$ da EDP são:
+
+\[
+\begin{cases}
+    a(t,x)=x\\
+    b(t,x)=1
+\end{cases}
+\]
+
+\noindent
+Devemos considerar o determinante
+
+\[
+\begin{vmatrix}\alpha'(r)&a(\Gamma(r))\\\beta'(r)&b(\Gamma(r))\end{vmatrix}
+\]
+
+\noindent
+Temos:
+
+\[
+\begin{vmatrix}\alpha'(r)&a(\Gamma(r))\\\beta'(r)&b(\Gamma(r))\end{vmatrix}=\begin{vmatrix}0&a(0,r)\\1&b(0,r)\end{vmatrix}=\begin{vmatrix}0&r\\1&1\end{vmatrix}=-r
+\]
+
+\noindent
+Temos $-r=0$ se e só se $r=0$, e $\Gamma(0)=(0,0)$, ou seja, o ponto da curva inicial em que o teorema da existência e unicidade não se aplica é $(0,0)$.
+
+\bigskip
+\noindent
+b)
+
+\medskip
+\noindent
+A equação da curva característica é:
+
+\[
+\begin{cases}
+    t'(s)=x(s) \\
+    x'(s)=1
+\end{cases}
+\]
+
+\bigskip
+\noindent
+b, 1)
+
+Suponhamos que o problema
+\[
+\left\{\begin{array}{c}
+xu_t + u_x = 0 \\
+u(0,x) = \sen(x)
+\end{array}
+\right.
+\]
+tenha solução definida em todo o $\mathbb{R}^2$.
+
+\medskip
+\noindent
+A curva $\gamma$ dada por:
+
+\[
+\begin{cases}
+    t(s)=\frac{1}{2}(s^2-(\frac{\pi}{2})^2) \\
+    x(s)=s
+\end{cases}
+\]
+
+\noindent
+é uma curva característica, assim $u\circ\gamma$ deve ser constante, porém $u(\gamma(\frac{\pi}{2}))=1$ e $u(\gamma(-\frac{\pi}{2}))=-1$, contradição.
+
+\bigskip
+\noindent
+b, 2)
+
+\medskip
+\noindent
+Por outro lado, consideremos o problema
+\[
+\left\{\begin{array}{c}
+xu_t + u_x = 0 \\
+u(0,x) = \cos(x)
+\end{array}
+\right.
+\]
+
+\noindent
+Consideremos a função $g:[0,\infty)\rightarrow\mathbb{R}$ tal que $g(x)=\cos\sqrt{x}$, então $g$ é de classe $\mathcal{C}^1$ em $(0,\infty)$ e $\lim_{x\rightarrow 0^+}g'(x)=-\frac{1}{2}$
+
+\medskip
+\noindent
+Para cada $l\in\mathbb{R}$ seja $h:\mathbb{R}\rightarrow\mathbb{R}$ dada por
+\[
+h(x)=\begin{cases}
+    g(x) & \text{se }x\geq 0\\
+    lx^2-\frac{x}{2}
+    & \text{se }x<0
+\end{cases}
+\]
+
+então $h$ é de classe $\mathcal{C}^1$ em $\mathbb{R}$, aí seja $u(x,y)=h(x^2-2t)$, então $u$ é uma solução do problema.}
+
+\exercicio{2} Mostre que as únicas soluções da equação
+\[xu_x + yu_y = 0 \]
+definidas em todo o $\mathbb{R}^2$ são as soluções constantes. Existem soluções não constantes definidas em algum aberto do $\mathbb{R}^2?$ Existem soluções não constantes definidas em algum círculo com centro na origem?
+
+\solucao{
+
+\noindent
+A equação da curva característica é:
+
+\[
+\begin{cases}
+    x'(s)=x(s) \\
+    y'(s)=y(s)
+\end{cases}
+\]
+
+\noindent
+a) Seja $\Omega\subseteq\mathbb{R}^2$ um aberto tal que $(0,0)\in \Omega$ e para quaisquer $p\in\Omega$ e $0<\lambda<1$ tenhamos $\lambda p\in\Omega$. Seja $u$ uma solução da EDP definida em $\Omega$.
+
+\medskip
+\noindent
+Para $p=(x_0,y_0)\in\Omega$, há um $\epsilon>0$ e uma função $\gamma:(-\infty,\epsilon)\rightarrow \Omega$ tais que:
+
+\[
+\begin{cases}
+    x_p(s)=x_0e^s \\
+    y_p(s)=y_0e^s
+\end{cases}
+\]
+
+\noindent
+A função $\gamma$ é uma curva característica tal que $\gamma(0)=p$. Portanto, a função $u\circ\gamma$ é constante. Além disso, $\lim_{s\rightarrow -\infty}\gamma(s)=(0,0)$. Assim $u(0,0)=u(\lim_{s\rightarrow -\infty}\gamma(s))=\lim_{s\rightarrow -\infty}u(\gamma(s))=\lim_{s\rightarrow -\infty}u(\gamma(0))=u(\gamma(0))=u(p)$, em suma $u(p)=u(0,0)$.
+
+\medskip
+\noindent
+Portanto $u$ é constante.
+
+\bigskip
+\noindent
+b) Por outro lado, consideremos $\Omega=\mathbb{R}^2\setminus\{(0,0)\}$ e consideremos:
+
+\[
+u(x,y)=\frac{x}{\sqrt{x^2+y^2}}.
+\]
+
+\noindent
+É fácil ver que $u$ é uma solução não constante da EDP definida em $\Omega$.}
+
+
+\exercicio{3}
+\dividiritens{
+\task[\pers{a}] Considere o problema
+\[
+\left\{\begin{array}{c}
+xu_x + yu_y = -u \\
+u(1,y) = h(y)
+\end{array}
+\right.
+\]
+Ache uma região bem grande onde a solução está bem definida.
+
+\task[\pers{b}] Considere o problema
+\[
+\left\{\begin{array}{c}
+xu_x + yu_y = -u \\
+u(\cos(r), \sen(r)) = h(r)
+\end{array}
+\right.
+\]
+Ache a maior região onde a solução está bem definida.
+}
+\solucao{
+
+\noindent
+A equação da curva característica é:
+\begin{equation*}
+    \begin{cases}
+    x'(s)=x(s) \\
+    y'(s)=y(s)
+    \end{cases}
+\end{equation*}
+
+\noindent
+a)
+
+\medskip
+\noindent
+Seja $\Omega$ o conjunto dos $(x,y)$ tais que $x>0$.
+
+\smallskip
+\noindent
+Para $p=(x_0,y_0)$ com $x_0>0$, então a curva dada por:
+\begin{equation*}
+    \begin{cases}
+    x(s)=x_0e^s \\
+    y(s)=y_0e^s
+    \end{cases}
+\end{equation*}
+é uma curva característica tal que $\gamma(0)=p$.
+
+\smallskip
+\noindent
+Agora seja $z(s)=u(\gamma(s))$. Então temos o seguinte:
+
+\begin{equation*}
+    \begin{cases}
+    z'(s)=-z(s) \\
+    z(-\ln{x_0})=h\left(\frac{y_0}{x_0}\right)
+    \end{cases}
+\end{equation*}
+
+\smallskip
+\noindent
+Nesse caso temos $z(s)=\frac{1}{x_0}h\left(\frac{y_0}{x_0}\right)e^{-s}$. Assim $u(x_0,y_0)=z(0)=\frac{1}{x_0}h\left(\frac{y_0}{x_0}\right)$.
+
+\smallskip
+\noindent
+Ou seja, para $(x,y)$ com $x>0$ temos $u(x,y)=\frac{1}{x}h\left(\frac{y}{x}\right)$.
+
+\bigskip
+\noindent
+b)
+
+\medskip
+\noindent
+Seja $\Omega$ um aberto em $\mathbb{R}^2$, e seja $I$ o conjunto dos $\theta\in\mathbb{R}$ tais que $(\cos{\theta},\sin{\theta})\in\Omega$.
+
+\bigskip
+\noindent
+b, 1)
+
+\medskip
+\noindent
+Se existe uma solução do problema definida em $\Omega$, então para $\theta\in I$ e $k\in\mathbb{Z}$ devemos ter $h(\theta+2k\pi)=h(\theta)$.
+
+\bigskip
+\noindent
+b, 2)
+
+\medskip
+\noindent
+Suponhamos que para $\theta\in I$ e $k\in\mathbb{Z}$ tenhamos $h(\theta+2k\pi)=h(\theta)$, e que $\Omega$ contenha $\mathbb{R}^2\setminus\{(0,0)\}$.
+
+\smallskip
+\noindent
+Para $p=(x_0,y_0)\neq(0,0)$, então a curva dada por:
+\begin{equation*}
+    \begin{cases}
+    x(s)=x_0e^s \\
+    y(s)=y_0e^s
+    \end{cases}
+\end{equation*}
+é uma curva característica tal que $\gamma(0)=p$.
+
+\smallskip
+\noindent
+Agora seja $z(s)=u(\gamma(s))$. Então temos o seguinte:
+
+\begin{equation*}
+    \begin{cases}
+    z'(s)=-z(s) \\
+    z\left(-\frac{1}{2}\ln{(x_0^2+y_0^2)}\right)=h\left(\arcsin\frac{y_0}{\sqrt{x_0^2+y_0^2}}\right)
+    \end{cases}
+\end{equation*}
+
+\smallskip
+\noindent
+Nesse caso temos
+
+\[
+z(s)=\frac{h\left(\arcsin{\frac{y_0}{\sqrt{x_0^2+y_0^2}}}\right)}{\sqrt{x_0^2+y_0^2}}e^{-s}
+\]
+
+\noindent
+Assim:
+\[
+u(x_0,y_0)=z(0)=\frac{h\left(\arcsin{\frac{y_0}{\sqrt{x_0^2+y_0^2}}}\right)}{\sqrt{x_0^2+y_0^2}}
+\]
+
+\smallskip
+\noindent
+Ou seja, para $(x,y)\neq (0,0)$ temos:
+\[
+u(x,y)=\frac{h\left(\arcsin{\frac{y}{\sqrt{x^2+y^2}}}\right)}{\sqrt{x^2+y^2}}
+\]
+
+\noindent
+b, 2, 1)
+
+\medskip
+\noindent
+Se $\Omega=\mathbb{R}^2\setminus\{(0,0)\}$, é fácil ver que a função $u:\Omega\rightarrow\mathbb{R}$ dada por:
+
+\[
+u(x,y)=\frac{h\left(\arcsin{\frac{y}{\sqrt{x^2+y^2}}}\right)}{\sqrt{x^2+y^2}}
+\]
+
+\noindent
+é uma solução do problema.
+
+\bigskip
+\noindent
+b, 2, 2)
+
+\medskip
+\noindent
+Se $\Omega=\mathbb{R}^2$, então para solução $u$ do problema, para $\theta\in\mathbb{R}$, para $r>0$ temos $u(r\cos{\theta},r\sin{\theta})=\frac{h(\theta)}{r}$, aí temos $h(\theta)=ru(r\cos{\theta},r\sin{\theta})$; logo $h(\theta)=\lim_{r\rightarrow 0^+}h(\theta)=\lim_{r\rightarrow 0^+}(ru(r\cos{\theta},r\sin{\theta}))=0$; portanto $u\equiv 0$.}
+
+\exercicio{4} Resolva o problema
+\[
+\left\{\begin{array}{c}
+u_t + u_x = u^2 \\
+u(0, x) = \cos(x)
+\end{array}
+\right.
+\]
+Ache o menor $t > 0$ para o qual a solução explode. Ache o ponto onde ela explode.
+
+\solucao{
+
+\noindent
+A equação característica da curva é:
+\begin{equation*}
+    \begin{cases}
+    t'(s)=1 \\
+    x'(s)=1
+    \end{cases}
+\end{equation*}
+
+\noindent
+Seja $u$ uma solução definida em $\mathbb{R}^2$.
+
+\smallskip
+\noindent
+Para $p=(t_0,x_0)$, então a curva dada por:
+\begin{equation*}
+    \begin{cases}
+    t(s)=t_0+s \\
+    x(s)=x_0+s
+    \end{cases}
+\end{equation*}
+é uma curva característica tal que $\gamma(0)=p$.
+
+\smallskip
+\noindent
+Agora seja $z(s)=u(\gamma(s))$. Então temos o seguinte:
+
+\begin{equation*}
+    \begin{cases}
+    z'(s)=(z(s))^2 \\
+    z(-t_0)=\cos(x_0-t_0)
+    \end{cases}
+\end{equation*}
+
+\smallskip
+\noindent
+Aí temos $\frac{z'(s)}{(z(s))^2}=1$, assim $-\frac{1}{z(0)}+\frac{1}{z(-t_0)}=0-(-t_0)$, aí $-\frac{1}{u(p)}+\frac{1}{\cos(x_0-t_0)}=t_0$, aí $\frac{1}{u(p)}=\frac{1}{\cos(x_0-t_0)}-t_0=\frac{1-t_0\cos(x_0-t_0)}{\cos(x_0-t_0)}$, aí $u(t_0,x_0)=\frac{\cos(x_0-t_0)}{1-t_0\cos(x_0-t_0)}$.
+
+\smallskip
+\noindent
+Ou seja, para $(t,x)$ temos $u(t,x)=\frac{\cos(x-t)}{1-t\cos(x-t)}$.
+
+\medskip
+\noindent
+O menor valor de $t$ para o qual a solução explode é $t=1$, e nesse caso ela explode nos valores $x=2k\pi+1$ com $k\in\mathbb{Z}$.
+
+}
+
+\exercicio{5} 
+
+Seja $u$ uma solução de $a(x, y)u_x +b(x, y)u_y = -u$ de classe $C^{1}$ no conjunto $x^2 + y^2 \le 1.$ Suponha que $u$ é $C^{1}$ até a fronteira. Suponha também que $a(x, y)x + b(x, y)y > 0$ em $x^2 + y^2 = 1.$ Mostre que $u \equiv 0.$
+
+\textsf{Sugestão:} se $(x_0, y_0)$ é um ponto onde $u(x, y)$ assume máximo, mostre que $u(x_0, y_0) \le 0.$
+
+\solucao{
+Como o domínio $S=\{(x,y)\in\mathbb{R}^2:x^2+y^2\leq 1\}$ é compacto, então $u$ assume ponto de máximo e ponto de mínimo.
+
+\medskip
+\noindent
+Seja $(x_0,y_0)$ ponto de máximo. Então existe uma curva característica maximal $\gamma$ tal que $\gamma(0)=(x_0,y_0)$, aí seja $z=u\circ \gamma$. Então, pela equação, devemos ter $z'(s)=-z(s)$.
+
+\medskip
+\noindent
+1) Se $(x_0,y_0)$ está no interior de $S$, então temos $z'(0)=0$, assim $z(0)=0$, aí $u(x_0,y_0)=0$.
+
+\medskip
+\noindent
+2) Se $(x_0,y_0)$ está na fronteira de $S$, então $a(x_0,y_0)x_0+b(x_0,y_0)y_0>0$, aí $\gamma'(0)\cdot\gamma(0)>0$, assim, como $\gamma(0)$ é normal à circunferência voltada para fora, então $\gamma'(0)$ está apontada para fora do círculo (mas não é necessariamente normal à circunferência), desse modo devemos ter $z'(0)\geq 0$, aí $z(0)\leq 0$, aí $u(x_0,y_0)\leq 0$.
+
+\medskip
+\noindent
+De qualquer modo, para todo $(x,y)\in S$ temos $u(x,y)\leq 0$.
+
+\medskip
+\noindent
+Analogamente, estudando sobre um ponto de mínimo, podemos concluir que para todo $(x,y)\in S$ temos $u(x,y)\geq 0$.
+
+\medskip
+\noindent
+Portanto $u\equiv 0$.
+
+}
+
+\section{\textcolor{Floresta}{Lista 2}}
+
+\exercicio{1}
+Seja $u(t, x)$ a solução do problema:
+\[
+\left\{\begin{array}{c}
+u_t -xu_x = -u \\
+u(0, x) = f(x)
+\end{array}
+\right.
+\]
+
+\noindent
+com $f$ de classe $\mathcal{C}^1$ defnida para todo $x$ real. Suponha também que o máximo
+da função $f$ vale $2$ e é assumido somente em $x = 1$. Para $t > 0$ fixado, calcule
+o máximo de $u(t, x)$ como função de $x$. Ache também o valor de $x$ onde o
+máximo é assumido.
+
+\solucao{
+
+A equação característica da curva é:
+
+\[
+\begin{cases}
+    t'(s)=1 \\
+    x'(s)=x(s)
+\end{cases}
+\]
+
+\noindent
+Para $p=(t_0,x_0)$, então a curva $\gamma$ definida por:
+
+\[
+\begin{cases}
+    t(s)=t_0+s \\
+    x(s)=x_0e^s
+\end{cases}
+\]
+
+\noindent
+é curva característica tal que $\gamma(0)=p$, assim seja $z=u\circ\gamma$, então:
+
+\[
+\begin{cases}
+    z'(s)=-z(s) \\
+    z(-t_0)=f(x_0e^{-t_0})
+\end{cases}
+\]
+
+\noindent
+Assim temos $z(s)=f(x_0e^{-t_0})e^{-(t_0+s)}$, aí $u(x_0,y_0)=z(0)=f(x_0e^{-t_0})e^{-t_0}$.
+
+\medskip
+\noindent
+Portanto para $(t,x)$ temos $u(t,x)=f(xe^{-t})e^{-t}$.
+
+\medskip
+\noindent
+Logo, para $t$, então o valor máximo é $2e^{-t}$ e o ponto de máximo é $x=e^t$.
+
+}
+
+\exercicio{2}
+Seja $u(t, x)$, $(t, x) \in \mathbb{R}^2$, uma solução de classe $\mathcal{C}^2$ da equação $u_{tt}-u_{xx} = 0$.
+
+\noindent
+Mostre que:
+\[
+u(x + h, t + k) + u(x -  h, t - k) = u(x + k, t + h) + u(x - k, t - h).
+\]
+Esboce o quadrilátero cujos vértices são os argumentos dessa identidade.
+
+\solucao{
+
+Como trata-se de uma equação de onda com $c = 1,$ sabemos que existem $F, G \colon \mathbb{R} \to \mathbb{R}$ tal que
+\[u(t,x) = F(x + ct) + G(x - ct)\]
+é solução.
+
+Aplicando-as, obtemos:
+
+\[\textcolor{Floresta}{u(x + h, t + k)} + \textcolor{blue}{
+u(x - h, t - k)} - \textcolor{red}{u(x + k, t + h)} - \textcolor{Laranja}{u(x - k, t - h)} = \]
+\[\textcolor{Floresta}{F(x+h + t+k) + G(x+h-t-k)} + \textcolor{blue}{
+F(x - h + t - k) + G(x - h -t + k)} - \]\[\textcolor{red}{F(x + k + t + h) + G(x + k - t - h)} - \textcolor{Laranja}{F(x - k + t - h) + G(x - k - t + h)} = \]\[=0\]}
+\exercicio{3}
+\dividiritens{
+\task[\pers{a}] Seja $u(t,x), 0 \le x \le L, t \ge 0,$ uma solução $C^2$ do problema
+\[
+\left\{\begin{array}{c}
+u_{tt} - u_{xx} + au = 0 \\
+u(t,0) = 0 = u(t,L)
+\end{array}
+\right.
+\]
+$a > 0,$ e definamos a energia
+\[E(t) = \int\limits_0^L (u^2_t(t,x) + u^2_x(t,x) + au^2(t,x)) \dif x
+\]
+Mostre que $E(t)$ é constante. Use esse fato para mostrar a unicidade de solução para o problema de valor inicial-fronteira
+
+\[
+\left\{\begin{array}{c}
+u_{tt} - u_{xx} + au = h(t,x) \\
+u(t,0) = 0 = u(t,L) \\
+u(0, x) = f(x) \\
+u_t(0,x)  =g(x)
+\end{array}
+\right.
+\]
+\task[\pers{b}] Ache uma solução do problema
+\[
+\left\{\begin{array}{c}
+u_{tt} - u_{xx} + 3u = 0 \\
+u(t,0) = 0 = u(t,\pi) \\
+u(0, x) = \sen(x) \\
+u_t(0,x)  =0
+\end{array}
+\right.
+\]
+da forma $u(t, x) = T(t)\sen(x).$ Existe outra solução?
+}
+
+\newpage
+
+\solucao{
+\dividiritens{
+\task[\pers{a}] 
+Para provar que a energia é constante, vamos verificar que sua derivada é nula.
+Para isso, usaremos que 
+\[u_{tt} - u_{xx} + au = 0  \Rightarrow au = u_{xx} - u_{tt} \Rightarrow \textcolor{Laranja}{au u_t = u_t u_{xx} - u_t u_{tt}}.\]
+Assim:
+\[\od{E(t)}{t} = \int\limits_0^L (2u_t u_{tt} + 2u_t u_{xx} + 2a u u_t) \dif x = 2 \int\limits_0^L (u_t u_{tt} + u_t u_{xx} + \textcolor{Laranja}{a u u_t}) \dif x =\]\[2 \int\limits_0^L (u_t u_{tt} + u_t u_{xx} + \textcolor{Laranja}{u_t u_{xx} - u_t u_{tt}}) \dif x = 2 \int\limits_0^L ( u_t u_{xx} + u_t u_{xx}) \dif x =   \]\[
+2 \int\limits_0^L  (u_t u_x)_x \dif x = 2 (u_t u_x) \Biggr|_{0}^{L} = 2( \textcolor{red}{u_t(t,L)} u_x(t,L) - \textcolor{red}{u_t(t,0)} u_x(t,0)) = \]\[ 2(\textcolor{red}{0} u_x(t,L) - \textcolor{red}{0} u_x(t,0)) = 0 \Rightarrow \boxed{\od{E(t)}{t} = 0}
+\]
+Portanto, a derivada de $E(t)$ é nula, e assim a energia é constante.
+\task[\pers{b}]
+}
+}
+
+
+
+\exercicio{4}
+
+Considere a equação $u_{tt} - c^2u_{xx} = 0$ na reta toda com cada uma das condições iniciais seguintes:
+\[ u(0, x) = \cos^2(x) \quad u_t(0, x) = \cos(x)\]
+\[u(0, x) = \cos(x) \quad u_t(0, x) = \cos^2(x) \]
+
+Em cada um dos casos, verifique se a seguinte afirmação é verdadeira:
+existe uma constante $M$ tal que $\abs{u(t, x)} \le M$ para todo $(t, x) \in \mathbb{R}^2.$
+
+\solucao{
+Vamos resolver cada um dos casos. Na primeira situação, temos:
+\[\left\{\begin{array}{c}
+     u_{tt} - c^2u_{xx} = 0  \\
+     u(0, x) = \cos^2(x) \\
+     u_t(0, x) = \cos(x) \\
+\end{array}\right.\]
+
+A partir da fórmula de d'Alembert, temos que a solução procurada é da forma
+\[
+u(t,x) = \frac{f(x + ct) + f(x - ct)}{2} + \frac{1}{2c} \int\limits_{x  -ct}^{x + ct} g(s) \dif s,
+\]
+para $f(x) = \cos^2(x)$ e $g(x) = \cos(x).$
+
+Então:
+\[\begin{array}{lcl}
+u(t,x) &=& \frac{\cos^2(x + ct) + \cos^2(x - ct)}{2} + \frac{1}{2c} \int\limits_{x  -ct}^{x + ct} \cos(s) ds  \\
+& = & \frac{\cos^2(x + ct) + \cos^2(x - ct)}{2} + \frac{1}{2c} (\sen(s)) \Biggr|_{x  -ct}^{x + ct} \\
+& = &  \frac{\cos^2(x + ct) + \cos^2(x - ct)}{2} + \frac{\sen(x+ct) - \sen(x - ct)}{2c} \\
+& = &  \frac{1}{2} \left(\cos^2(x + ct) + \cos^2(x - ct) + \frac{\sen(x+ct) - \sen(x - ct)}{c}  \right)\\
+\end{array}
+\]
+
+Assim, temos que
+\[
+\begin{array}{lcl}
+\abs{u(t,x)} &=& \abs{\frac{1}{2} \left(\cos^2(x + ct) + \cos^2(x - ct) + \frac{\sen(x+ct) - \sen(x - ct)}{c}  \right)} \\
+& \le & \frac{1}{2} \textcolor{Floresta}{\abs{ \cos^2(x + ct) + \cos^2(x - ct)}} + \frac{1}{2\abs{c} } \textcolor{cyan}{\abs{\sen(x+ct) - \sen(x - ct) }} \\
+& \le & \frac{1}{2} \textcolor{Floresta}{\abs{ 1 + 1}} + \frac{1}{2\abs{c} } \textcolor{cyan}{\abs{1 - (-1) }} \\
+& = & 1 + \frac{1}{\abs{c}} = \frac{\abs{c} + 1}{\abs{c}}\\
+\end{array}
+\]
+Logo, existe uma constante $M = \frac{\abs{c} + 1}{\abs{c}}$ tal que $\abs{u(t,x)} \le M$ para todo $(t,x) \in \mathbb{R}^2.$
+
+Na segunda situação, observe que 
+\[\left\{\begin{array}{c}
+     u_{tt} - c^2u_{xx} = 0  \\
+     u(0, x) = \cos(x) \\
+     u_t(0, x) = \cos^2(x) \\
+\end{array}\right.\]
+
+A partir da fórmula que resolve este problema, temos que a solução procurada é da forma
+\[
+u(t,x) = \frac{f(x + ct) + f(x - ct)}{2} + \frac{1}{2c} \int\limits_{x  -ct}^{x + ct} g(s) \dif s,
+\]
+para $f(x) = \cos(x)$ e $g(x) = \cos^2(x).$
+
+Lembrando da identidade trigonométrica
+\[\cos^2(\theta) = \frac{1 + \cos\left(2 \theta \right)}{2}
+\]
+Então:
+\[\begin{array}{lcl}
+u(t,x) &=& \frac{\cos(x + ct) + \cos(x - ct)}{2} + \frac{1}{2c} \int\limits_{x  -ct}^{x + ct} \textcolor{Laranja}{\cos^2(s)} \dif s  \\
+&=& \frac{\cos(x + ct) + \cos(x - ct)}{2} + \frac{1}{2c} \int\limits_{x - ct}^{x + ct} \textcolor{Laranja}{\frac{1 + \cos\left(2 s\right)}{2}} \dif s  \\
+& = & \frac{\cos(x + ct) + \cos(x - ct)}{2} + \frac{1}{2c}\left(\frac{s + \frac{\sen(2s)}{2}}{2}   \right) \Biggr|_{x  -ct}^{x + ct} \\
+& = &  \frac{\cos(x + ct) + \cos(x - ct)}{2} + \frac{1}{4c} \left(\left(x + ct + \frac{\sen(2(x+ct))}{2}\right)\right. \\
+& & \left. - \left(x - ct + \frac{\sen(2(x- ct))}{2}\right) \right) \\
+& = &  \frac{\cos(x + ct) + \cos(x - ct)}{2} + \frac{1}{4c} \left(2ct + \frac{\sen(2(x+ct)) - \sen(2(x- ct))}{2}\right) \\
+& = &  \frac{\cos(x + ct) + \cos(x - ct)}{2} + \frac{t}{2} + \frac{\sen(2(x+ct)) - \sen(2(x- ct))}{8c} \\
+
+& = &  \frac{1}{2} \left(\cos(x + ct) + \cos(x - ct) + t + \frac{\sen(2(x+ct)) - \sen(2(x- ct))}{4c} \right) \\
+\end{array}
+\]
+
+Mas note que
+\[
+\begin{array}{lcl}
+\abs{u(t,x)} & = & \frac{1}{2} \abs{\cos(x + ct) + \cos(x - ct) + t + \frac{\sen(2(x+ct)) - \sen(2(x- ct))}{4c} }\\
+& \ge & -\frac{1}{2} \textcolor{Floresta}{\abs{ \cos(x + ct) + \cos(x - ct)}} + \frac{\abs{t}}{2} \\
+& & -\frac{1}{8\abs{c} } \textcolor{cyan}{\abs{\sen(2(x+ct)) - \sen(2(x - ct)) }} \\
+& \ge & -\frac{1}{2} \textcolor{Floresta}{\abs{ 1 + 1}} +  \frac{\abs{t}}{2} - \frac{1}{8\abs{c} } \textcolor{cyan}{\abs{1 - (-1) }} \\
+& = & -1 + \frac{\abs{t}}{2} - \frac{1}{4\abs{c}} = \frac{-4\abs{c} + 2  \abs{t} \abs{c} - 1}{4 \abs{c}}
+\end{array}
+\]
+
+Como $\frac{-4\abs{c} + 2 \abs{t} \abs{c} - 1}{4 \abs{c}}$ depende da variável $t,$ e esta pode ser tão grande quanto se queira, concluímos que para este caso não existe constante $M$ tal que $\abs{u(t,x)} \le M \ \forall (t,x) \in \mathbb{R}^2.$}
+
+\exercicio{5}
+Se $f(x)$ e $g(x)$ se anulam no intervalo $(-10, 10),$ por quanto tempo podemos garantir que a solução $u(t, x)$ do problema
+\[\begin{array}{c}
+u_{tt} - 4u_{xx} = 0\\
+u(0, x) = f(x)\\ 
+u_t(0, x) = g(x)
+\end{array}\]
+se anula para $x = 0?$
+
+\solucao{
+Sabemos que a solução $u(t,x)$ é da forma
+\[
+u(t,x) = \frac{f(x + 2t) + f(x - 2t)}{2} + \frac{1}{4} \int\limits_{x  -2t}^{x + 2t} g(s) \dif s.
+\]
+
+Avaliando esta em $x = 0,$ temos que
+\[
+u(t,0) = \frac{f(2t) + f(- 2t)}{2} + \frac{1}{4} \int\limits_{-2t}^{2t} g(s) \dif s.
+\]
+
+Para garantir que $u(t,0)$ se anula, precisamos ter certeza de que o lado direito da igualdade é nulo. Mas isso implica
+\[
+\frac{f(2t) + f(- 2t)}{2} = 0 \Rightarrow f(2t) + f(-2t) = 0 \Rightarrow 2t \in (-10,10) \Rightarrow t \in (-5,5)
+\]
+\[
+\int\limits_{-2t}^{2t} g(s) \dif s = 0 \Rightarrow g(s) = 0 \ \forall s \in (-2t, 2t) \Rightarrow 2t \in (-10,10) \Rightarrow t \in (-5,5)
+\]
+Desse modo, concluímos que podemos garantir que $u(t,0)$ é nula para $t \in (-5,5).$
+}
+
+\exercicio{6}
+Considere uma solução da equação da onda unidimensional
+\[u_{tt} = u_{xx}\]
+e suponha que as condições iniciais $u(0, x)$ e $u_t(0, x)$ se anulam fora do intervalo $(2, 5).$ Para que valores de $t \ge 0$ podemos garantir que $u(t, 11)$ se anula?
+
+\solucao{
+A solução $u(t,x)$ é da forma
+\[u(t,x) = \frac{f(x + t) + f(x - t)}{2} + \frac{1}{2} \int\limits_{x  - t}^{x + t} g(s) \dif s.\]
+
+Avaliando esta em $x = 11,$ temos que
+\[u(t,11) = \frac{f(11 + t) + f(11 - t)}{2} + \frac{1}{2} \int\limits_{11 - t}^{11 + t} g(s) \dif s.\]
+
+Para garantir que $u(t,11)$ se anula, precisamos ter certeza de que o lado direito da igualdade é nulo. Mas isso implica
+\[\frac{f(11 + t) + f(11 - t)}{2} = 0 \Rightarrow f(11 + t) + f(11 - t) = 0 \Rightarrow \]\[
+\left\{\begin{array}{l}
+    11 + t \notin (2,5) \Rightarrow t \notin (-9, -6)  \\
+     11 - t \notin (2,5) \Rightarrow t \notin (6, 9)
+\end{array}\right.\]
+\[\int\limits_{11-t}^{11+t} g(s) \dif s = 0 \Rightarrow g(s) = 0 \ \forall s \in (11 - t, 11 + t) \Rightarrow \]\[\left\{\begin{array}{l}
+    11 + t \notin (2,5) \Rightarrow t \notin (-9, -6)  \\
+     11 - t \notin (2,5) \Rightarrow t \notin (6, 9)
+\end{array}\right.\]
+Desse modo, para $t \ge 0,$ podemos garantir que $u(t,0)$ é nula para $t \in [0,6) \cup (9, \infty).$
+}
+\exercicio{7}
+
+Seja $u(t, x)$ uma solução da equação
+\[u_{tt} - u_{xx} = q(t, x)u\]
+
+com condições iniciais nulas. Se $q$ é limitada no $\mathbb{R}^2,$ mostre que $u$ é identicamente nula.
+
+\solucao{
+
+Para todo $(t,x)$, seja $\triangle(t,x)$ o triângulo de vértices $(t,x)$ e $(0,x-t)$ e $(0,x+t)$. Seja $C=\sup\limits_{\mathbb{R}^2}\abs{q(t,x)}$.
+
+\medskip
+\noindent
+Para $(t,x)$ tal que $t^2\leq\frac{1}{2C}$, então, pela fórmula de Duhamel, temos:
+
+\[u_{tt} - u_{xx} = \textcolor{blue}{q(t, x)} \textcolor{red}{u} \Rightarrow u(t,x) = \iint\limits_{\triangle (t,x)} \textcolor{blue}{q(s,y)} \textcolor{red}{u(s,y)} \dif s \dif y
+\]
+
+Seja $M = \sup\limits_{\triangle (t,x)} \abs{u(s,y)}.$ 
+Observe que tal sup é de fato assumido no triângulo $\triangle(t,x)$. Considere então o ponto $(t_1, x_1) \in \mathbb{R}^2$ tal que $M = \abs{u(t_1,x_1)}.$ 
+Então, temos que
+\[
+\begin{array}{lcl}
+M = \abs{u(t_1, x_1)} &=& \abs{\iint\limits_{\triangle(t_1,x_1)} u(s,y) q(s,y) \dif s \dif y } \\
+& \le & \iint\limits_{\triangle(t_1,x_1)} \textcolor{Laranja}{\abs{u}} \abs{q} \dif s \dif y \\
+& \le & \textcolor{Laranja}{M} \iint\limits_{\triangle(t_1,x_1)}  \abs{q(s,y)} \dif s \dif y \\
+& \le & MC \iint\limits_{\triangle } \dif s \dif y \\
+& \le & MCt^2 \\
+& \le & MC\frac{1}{2C} \\
+& = & \frac{M}{2}
+\end{array}
+\]
+
+Concluímos assim que $M \leq \frac{M}{2},$ o que implica $M = 0.$ Dessa forma, concluímos que $\sup\limits_{\triangle (t,x)} \abs{u(s,y)} = 0,$ e desse modo, $\forall (t,x) \in \triangle(t,x):u(s,y) = 0.$
+
+\medskip
+\noindent
+Logo, sendo $T^2\leq\frac{1}{2C}$, a solução $u$ é nula na faixa $\{(t,x)\in\mathbb{R}^2:0\leq t\leq T\}$.
+
+\medskip
+\noindent
+Analogamente, podemos mostrar que $u$ é nula na faixa $\{(t,x)\in\mathbb{R}^2:T\leq t\leq 2T\}$ (basta considerar $u(t-T,x)$ em vez de $u(t,x)$), e assim por diante.
+
+\medskip
+\noindent
+Assim $u$ é nula em $\{(t,x)\in\mathbb{R}^2:t\geq 0\}$. Considerando $-u$ em vez de $u$, de modo análogo mostramos que $u$ é nula me $\{(t,x)\in\mathbb{R}^2:t\leq 0\}$. Ou seja, $u\equiv 0$.
+
+}
+
+\exercicio{8}
+Mostre que toda solução do problema
+\[u_{tt} - c^2u_{xx} = 0, 0 \le x \le L; u(t, 0) = 0 = u(t, L)\]
+é periódica na variável $t.$ Qual é o período?
+
+\solucao{
+Vamos usar a fórmula de d'Alembert. Temos que
+\[
+u(t,x) = \frac{f(x + ct) + f(x - ct)}{2} + \frac{1}{2c} \int\limits_{x  -ct}^{x + ct} g(s) \dif s
+\]
+Temos que
+\[
+u(t,0) = \frac{f(ct) + f(-ct)}{2} + \frac{1}{2c} \int\limits_{-ct}^{ct} g(s) \dif s  = 0
+\]
+\[
+u(t,L) = \frac{f(L+ct) + f(L-ct)}{2} + \frac{1}{2c} \int\limits_{L-ct}^{L+ct} g(s) \dif s  = 0
+\]
+Então
+\[u(t,0) - u(t,L) = \frac{f(ct) + f(-ct)}{2} + \frac{1}{2c} \int\limits_{-ct}^{ct} g(s) \dif s  - \frac{f(L+ct) + f(L-ct)}{2} - \frac{1}{2c} \int\limits_{L-ct}^{L+ct} g(s) \dif s \Rightarrow
+\]
+\[
+0 = \frac{f(ct) + f(-ct) + f(L+ct) + f(L-ct)}{2} + \frac{1}{2c} \left(\int\limits_{-ct}^{ct} g(s) \dif s - \int\limits_{L-ct}^{L+ct} g(s) \dif s \right)
+\]
+}
+
+\exercicio{9}
+
+Analise se as seguintes afirmações são verdadeiras:
+
+\dividiritens{
+\task[\pers{a}]  Se $u(t,x)$ resolve o problema
+
+\[
+u_{tt} - u_{xx} = 0; \quad u(0, x) = \varphi(x), \quad u_t(0, x) = \psi(x)
+\]
+
+\noindent
+na reta toda e as condições iniciais são não negativas em toda a reta, então
+$u(t, x) \geq 0$ para todo $(t, x)$, $t \geq 0$. E para $t \leq 0$?
+
+\task[\pers{b}] Se $u(t, x)$ resolve o problema acima num intervalo $[0, L]$ com condições de Dirichlet, então vale a mesma conclusão como acima.
+
+\task[\pers{c}] Se $u(t, x)$ resolve o problema acima num intervalo $[0, L]$ com condições de Neumann nos dois extremos, então vale a mesma conclusão como acima.}
+
+
+\solucao{
+\dividiritens{
+\task[\pers{a}]a,1)
+
+\medskip
+\noindent
+Sabemos que a solução $u(t,x)$ será da forma
+\[
+u(t,x) = \frac{\varphi(x + t) + \varphi(x - t)}{2} + \frac{1}{2c}\int\limits_{x  - t}^{x + t} \psi(s) ds
+\]
+Como as condições iniciais são não-negativas, então $\frac{\varphi(x + t) + \varphi(x - t)}{2} \ge 0$ e se $t\geq 0$ então $\frac{1}{2}\int\limits_{x  -t}^{x + t} \psi(s) ds \ge 0$, logo, teremos $u(t,x) \ge 0.$
+
+\medskip
+\noindent
+a,2)
+
+\medskip
+\noindent
+Por outro lado, fazendo $u(t,x)=t$, então é fácil ver que $u_{tt}-u_{xx}=0$ e $u(0,x)=0$ e $u_t(0,x)=1>0$, de modo que $u$ satisfaz o problema, mas $u(-1,0)=-1<0$.
+
+\task[\pers{b}] Sendo $u(t,x)=\sin{\frac{\pi t}{L}}\sin{\frac{\pi x}{L}}$, então temos $u_{tt}-u_{xx}=0$ e $u(0,x)=0$ e $u_t(0,x)=\sin x\geq 0$ (para $0\leq x\leq L$), e também $u(t,0)=0$ e $u(t,L)=0$, mas $u(\frac{3L}{2},\frac{L}{2})=-1<0$.
+
+\task[\pers{c}] Se $u(t,x)$ resolve o problema num intervalo $[0,L]$ com condições de Dirichlet, então seja $v(t,x)$ dada por:
+\[
+v(t,x)=\begin{cases}
+    u(t,x) & \text{se }0\leq x\leq L\\
+    u(t,2L-x) & \text{se }L\leq x\leq 2L
+\end{cases}
+\]
+
+\noindent
+Por fim seja $w(t,x)$ dada por 
+\[
+w(t,x)=v\left(t,2L\left\{\frac{x}{2L}\right\}\right)
+\]
+
+\noindent
+em que $\{r\}$ denota a parte fracionária de $r$.
+
+\smallskip
+\noindent
+Pela condição de Neumann em $u$ e pela definição de $w$, é fácil ver que $w$ é duas vezes diferenciável, e que satisfaz as hipóteses do item (a), assim $w(t,x)\geq 0$, mas $w$ estende $u$, assim $u(t,x)\geq 0$.
+}}
+
+
+
+\section{\textcolor{Floresta}{Lista 3}}
+
+\exercicio{1}
+Se $f(x)= \sqrt{\abs{x}},$ usando a fórmula
+\[
+s_n(x) - \frac{f(x^{+}) + f(x^{-})}{2} = \]\[\int\limits_0^\pi K_n(\theta) \left( frac{f(x + \theta) - f(x^{+})}{2 \pi} \right) \dif \theta + \int\limits_{-\pi}^{0} K_n(\theta) \left( \frac{f(x + \theta) - f(x^{-}) }{2 \pi } \right) \dif \theta = \]\[ 
+\int\limits_{0}^\pi g_{+}(\theta) \sen \left( \left( N + \frac{1}{2}\right) \theta  \right) \dif \theta + \int\limits_{- \pi}^0 g_{-}(\theta) \sen \left( \left( N + \frac{1}{2}\right) \theta  \right) \dif \theta
+\]
+onde
+\[
+g_{\pm} (\theta) = \frac{f(x + \theta) - f(x^{\pm})}{\sen \left(\frac{\theta}{2}  \right)}
+\]
+e o Lema de Riemann-Lebesgue, mostre que $s_n(0)$ converge para $f(0)=0,$ onde $s_n(x)$ denota a soma parcial da série de Fourier.
+
+Dado o teorema:
+
+
+Porquê tal resultado não pode ser usado no presente exemplo?
+
+\solucao{}
+
+
+\exercicio{2}
+
+Se $f(x) =\abs{x},$ $- \pi < x < \pi,$ use o Teorema de Parseval para obter a soma de uma série.
+\solucao{
+Seja $f(x)$ uma função periódica de período $2 \pi$ tal que $f(x) = \abs{x}$ para $x \in [-\pi, \pi].$ Temos:
+\[
+A_0 = \frac{1}{\pi} \int\limits_{- \pi}^\pi \abs{x} \dif x = \frac{2}{\pi} \int\limits_{0}^\pi = x \dif x = \pi
+\]
+\[
+A_k = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} \abs{x} \cos(mx) \dif x = \frac{2}{\pi} \int\limits_0^\pi x \cos (mx) \dif x = \]\[\frac{2}{\pi} \left( \frac{\sen(mx)}{x} \Bigg|_0^\pi - \frac{2}{\pi} \int\limits_0^\pi \frac{\sen(mx)}{x} \dif x \right) = \]\[0 + \frac{2}{\pi m} \frac{\cos(mx)}{x} \Bigg|_0^\pi = \frac{2}{\pi m^2} ((-1)^m  - 1)
+\]
+\[
+B_k = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} \abs{x} \sen(mx) \dif x = 0
+\]
+Ou seja, a série de Fourier de $f(x)$ é
+\[
+f(x) = \frac{\pi}{2} - \frac{4}{\pi} \left( \textcolor{Emerald}{\sum\limits_{m = 0}^\infty \frac{\cos((2m+1)x)}{(2m+1)^2}}\right) = \]\[\frac{\pi}{2} - \frac{4}{\pi} \left(  \textcolor{Emerald}{ \cos(x) + \frac{\cos(3x)}{3^2} + + \frac{\cos(5x)}{5^2} + \frac{\cos(7x)}{7^2} + \ldots } \right) = \]\[ \frac{\pi}{2} - \frac{4}{\pi}\Lambda (x)
+\]
+
+Como $f$ é $\mathcal{C}^1$ por trechos, então o teorema de Fejér se aplica. Além disso, $f$ é contínua, o que nos permite escrever
+\[
+\abs{x} = \frac{\pi}{2} - \frac{4}{\pi} \left( \sum\limits_{m = 0}^\infty \frac{\cos((2m+1)x)}{(2m+1)^2}\right), \mbox{para } -\pi \le x \le \pi.
+\]
+Tomando $k = 0,$ obtemos que
+\[0 = \frac{\pi}{2} - \frac{4}{\pi} \left( \textcolor{Floresta}{1 + \frac{1}{9} + \frac{1}{25} + \ldots }\right) \Rightarrow \frac{\pi}{2} = \frac{4}{\pi} \textcolor{Floresta}{\sum\limits_{k = 1}^\infty \frac{1}{(2k-1)^2}} \Rightarrow \boxed{\sum\limits_{k = 1}^\infty \frac{1}{(2k-1)^2} = \frac{\pi^2}{8}}
+\]
+
+
+
+}
+
+\exercicio{3}
+
+Seja $f(x)$ uma função periódica de período $2$ definida para $-1 \le x \le 1$ da seguinte forma:
+\[\begin{cases}
+    x^2, &\mbox{se } -1 \le x \le 0; \\
+    -2x+1, &\mbox{se }  0 \le x \le \frac{1}{2};\\
+    0, & \mbox{se } \frac{1}{2} < x < 1.
+\end{cases}\]
+
+Seja também $s_n(x)$ a série de Fourier de $f(x)$ somada até $n.$ Calcule
+\[
+\lim\limits_{n \to \infty} s_n(x)
+\]
+para os seguintes valores de  $x:$ $x = 0,$ $x = \frac{1}{2}, x = 1.$
+Enuncie o teorema utilizado para justificar sua resposta.
+\solucao{}
+
+\exercicio{4}
+Prove a seguinte generalização da identidade de Parseval: se $f(x)$ e $g(x)$ são duas funções de quadrado integrável no intervalo $[-L,L]$ e se $A_n, B_n$ e $\alpha_n, \beta_n$ são, respectivamente, os coeficientes de Fourier de $f(x)$e de $g(x),$então:
+\[
+\frac{1}{L} \int\limits_{-L}^L f(x) g(x) \dif (x) \frac{A_0 \alpha_0}{2} + \int\limits_{n = 1}^\infty (A_n \alpha_n + B_n \beta_n)
+\]
+Sugestão: calcule $(f(x) + g(x))^2 - f^2(x) - g^2(x).$
+\solucao{}
+
+
+\exercicio{5}
+Se $f$ é um função $2 \pi$ periódica de classe $C^1$ com média zero, então
+\[\int\limits_{-\pi}^{\pi} f^2(x) \dif x \le \int\limits_{-\pi}^{\pi} f^{\prime 2}(x) \dif x 
+\]
+A hipótese sobre a média zero é necessária?
+
+\solucao{
+Sejam $A_n$ e $B_n$ os coeficiente da Série de Fourier de $f,$ e sejam $A_n^\prime$ e $B_N^\prime$ os coeficientes da Série de Fourier de $f^\prime.$ Sabemos que
+\[
+\begin{array}{l}
+     A_n^\prime = nB_n  \\
+     B_n^\prime = -nA_n
+\end{array}
+\]
+
+Se uma função tem média zero, isso quer dizer que $\int\limits_{-\pi}^{\pi} f(x) \dif x = 0$. Portanto, $A_0 = 0.$ Consequentemente, $A_0^\prime = 0.$
+Pelo Teorema de Parseval, temos que:
+\[
+\begin{array}{lcl}
+\frac{1}{\pi}\int\limits_{- \pi}^\pi f^{\prime 2}(x) \dif x &=& \frac{A_0^{\prime 2}}{2} + \sum\limits_{n = 1}^\infty (A_n^{\prime 2} + B_n^{\prime 2}) \\
+& = & \sum\limits_{n = 1}^\infty (A_n^{\prime 2} + B_n^{\prime  2})\\
+& = & \sum\limits_{n = 1}^\infty ((nB_n)^2 + (-nA_n)^2) \\
+& = & \sum\limits_{n = 1}^\infty (n^2 (A_n^2 + B_n^2) \\
+& \ge & \sum\limits_{n = 1}^\infty  (A_n^2 + B_n^2)\\
+& = & \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f^2(x) \dif x
+\end{array}
+\]
+Portanto, segue que 
+\[\int\limits_{-\pi}^{\pi} f^2(x) \dif x \le \int\limits_{-\pi}^{\pi} f^{\prime 2}(x) \dif x 
+\]
+
+A hipótese de média zero é necessária. Considere a função
+}
+
+\section{\textcolor{Floresta}{Lista 4}}
+
+\exercicio{1}
+Seja $D$ um aberto limitado do $\mathbb{R}^2$ e $u \in \mathcal{C}^2(D) \cap \mathcal{C}(\overline{D})$ uma solução do seguinte problema:
+\[
+- \Delta u + u^3 + uu_x^3 + u^2_y = 0 \ \mbox{em }D; u = 0 \ \mbox{em } \partial D.
+\]
+Mostre que $u$ se anula identicamente em $D.$
+
+\solucao{
+
+Como $D$ é limitado, então $\overline{D}$ é compacto, aí existe um ponto de máximo $x_0\in D$. Se $x_0\in \partial D$, então $u(x_0)=0$. Senão, então $x_0$ está no interior de $D$, assim $u_x(x_0)=0$ e $u_y(x_0)$ e $u_{xx}(x_0)\leq 0$ e $u_{yy}(x_0)\leq 0$, assim temos $\Delta u(x_0)\leq 0$, porém temos $(u(x_0))^3=\Delta u(x_0)\leq 0$, assim $u(x_0)\leq 0$. Portanto para todo $x\in \overline{D}$ temos $u(x)\leq 0$. De modo análogo, pegando um ponto de mínimo, então para todo $x\in \overline{D}$ temos $u(x)\geq 0$. Portanto $u\equiv 0$.
+}
+
+\exercicio{2}
+Seja $\Omega \subseteq \mathbb{R}^3$ um aberto limitado e $u(x, y, z)$ uma solução do problema não linear
+\[
+- \Delta u = ku^2(1 - u) \ \mbox{em } \Omega; u = 0 \ \mbox{em } \partial \Omega
+\]
+onde $k > 0$ é uma constante. Mostre que $0 \le u(x) \le 1.$
+Sugestão: suponha que o valor máximo de $u(x, y, z)$ em $\Omega$ seja maior que $1.$
+
+\solucao{
+Como $\Omega$ é limitado, então $\overline{\Omega}$ é compacto, assim existe um ponto de máximo $x_0\in\overline{\Omega}$. Se $x_0\in\partial D$, então $u(x_0)\leq 1$. Senão, então $x_0$ está no interior de $D$, assim $\nabla u(x_0)=0$ e também $u_{xx}(x_0)\leq 0$ e $u_{yy}(x_0)\leq 0$ e $u_{zz}(x_0)\leq 0$, assim $\Delta u(x_0)\leq 0$, assim $-ku(x_0)(1-u(x_0))=\Delta u(x_0)\leq 0$, assim $0\leq u(x_0)\leq 1$. Analogamente tomando um ponto de mínimo $x_1$, concluímos que $0\leq u(x_1)\leq 1$. Assim para todo $x\in\overline{D}$ temos $0\leq u(x)\leq 1$.
+}
+
+\exercicio{3}
+Calcule a integral
+\[
+\iint\limits_{D} (x^3 - 3xy^2) \dif x \dif y
+\]
+
+onde
+\[
+D = \{(x, y) \in \mathbb{R}^2: (x + 1)^2 + y^2 \le 9, (x - 1)^2 + y^2 \ge 1.\}
+\]
+Sugestão: calcule o laplaciano do integrando.
+\solucao{}
+
+
+\exercicio{4}
+Seja $\Omega \subset \mathbb{R}^2$ um aberto limitado simétrico em relação à origem e $f \colon \partial \Omega \to \mathbb{R}$ uma função contínua ímpar. Se $u(x, y)$ é solução do problema de Dirichlet, mostre que $u(x, y)$  é uma função ímpar.
+Sugestão:: estude a invariância do laplaciano em relação à transformação $T(x, y) = (-x, -y).$
+
+
+\solucao{}
+
+
+\exercicio{5}
+Seja $\Omega \subset \mathbb{R}^3$ a bola aberta com centro na origem e raio um. Seja  $u \in \mathcal{C}^2(\Omega) \cap \mathcal{C}(\overline{\Omega})$ uma função harmônica que vale $xy + yz$ em $\partial\Omega$. Ache o máximo e o mínimo de $u(x, y, z)$ em $\overline{\Omega}$ e o valor de $u$ no centro da bola.
+\solucao{
+a)
+
+\medskip
+\noindent
+Sabemos que, numa função harmônica, os pontos de máximo e de mínimo sempre estarão na fronteira de $\Omega$. Assim podemos assumir que $x^2+y^2+z^2=1$ e encontrar o máximo de $xy+yz$. Mostraremos duas maneiras diferentes de se encontrar os pontos de máximo e de mínimo.
+
+\medskip
+\noindent
+a,1) Via multiplicador de Lagrange.
+\[
+\nabla u=\lambda \nabla(x^2+y^2+z^2-1)
+\]
+aí:
+\[
+(y,x+z,y)=(2x,2y,2z)
+\]
+assim temos um sistema:
+\[
+\left\{
+\begin{array}{rcl}
+y&=&\lambda\cdot 2x\\
+x+z&=&\lambda \cdot 2y\\
+y&=&\lambda\cdot 2z
+\end{array}
+\right.
+\]
+Portanto temos $x=z$ e $x=\lambda y$ e $y=2\lambda x$, assim temos $y=2\lambda x=2\lambda^2 y$, aí $\lambda^2=\frac{1}{2}$, aí $\lambda=\frac{1}{\sqrt{2}}$ ou $\lambda=-\frac{1}{\sqrt{2}}$, aí como $x^2+y^2+z^2=1$ então $\lambda^2 y^2+y^2+\lambda^2 y^2= 2y^2$, assim $y=\frac{1}{\sqrt{2}}$ ou $y=-\frac{1}{\sqrt{2}}$, aí $(x,y,z)$ é igual a um dos pares $()$ e $()$ e $()$ e $()$.
+
+\medskip
+\noindent
+Com a condição $x^2+y^2+z^2=1$, então temos $xy+yz=\frac{\sqrt{2}}{2}=$
+
+\medskip
+\noindent
+a,2) Via desigualdades elementares:
+
+\medskip
+\noindent
+Para quaisquer números reais temos $x^2+y^2\geq 2xy$ com a igualdade ocorrendo se e só se $x=y$, e também temos $x^2+y^2\geq -2xy$ com a igualdade ocorrendo se e só se $x=-y$.
+
+\medskip
+\noindent
+b)
+
+\medskip
+\noindent
+Como $\Delta u=0$ e $B(a,r)\subseteq\mathbb{R}^n$, então pelo teorema da média esférica temos:
+\[
+\frac{1}{\omega_n r^{n-1}}u(a)=\int\limits_{\partial B(a,r)}u(x)dS(x)
+\]
+em que $\omega_n$ é a área da superfície da esfera de $n$ dimensões. Em particular:
+\[
+\begin{array}{rcl}
+\frac{1}{\omega_3}u(0)&=&\int\limits_{\partial B(a,r)}u(x)dS(x)\\&=&\int\limits_{\partial B(0,1)}(xy+yz)dS(x)\\&=&\int\limits_{\partial B(0,1)}(x,y,z)\cdot(y,z,0)dS(x)\\\text{(Teorema do divergente)}&=&\int\limits_{B(0,1)}\nabla\cdot(y,z,0)dxdydz\\&=&0
+\end{array}
+\]
+}
+
+\exercicio{6}
+
+Seja $u \in \mathcal{C}^2 (\mathbb{R}^n)$ uma função tal que
+\[
+\int\limits_B u(x) \Delta f(x) = 0
+\]
+para toda bola $B$ e toda função $f \in \mathcal{C}^2(\mathbb{R}^n)$ que se anula fora de $B.$ Mostre que $u$ é harmônica explicando detalhadamente onde a continuidade das segundas derivadas de $u$ foi usada.
+
+\solucao{}
+
+
+\section{\textcolor{Floresta}{Lista 5}}
+
+\exercicio{1} 
+
+Seja $u(x)$ uma função harmônica em todo o $\mathbb{R}^n$ tal que a integral imprópria
+\[
+\iint\limits_{\mathbb{R}^n} \abs{u(x,y)} \dif x \dif y
+\]
+seja finita. Mostre que $u(x)$ é identicamente nula.
+
+
+\solucao{}
+
+
+\exercicio{2} 
+
+Seja $u \colon \mathbb{R}^n \to \mathbb{R}$ uma função harmônica e suponha que exita uma constante $C > 0$ tal que 
+\[
+\abs{u(x)} < C(1 + \sqrt{x})
+\]
+para todo $x \in \mathbb{R}^n.$ Mostre que $u$ é constante.
+
+\solucao{}
+
+\exercicio{3} 
+
+Seja $u(x)$ uma função harmônica definida em todo o $\mathbb{R}^n.$ Suponha que para todo $x \in \mathbb{R}^2$ valha
+a desigualdade $\abs{u(x)} \le  A \abs{x} + B,$ onde $A$ e $B$ são constantes. Mostre que $u(x)$ é uma função linear.
+
+\solucao{}
+
+\exercicio{4}
+
+Sejam $\Omega \subset \mathbb{R}^n$ aberto, $u$ harmônica em $\Omega$ e $x_0 \in \Omega.$ Mostre que se $n \ge 2,$ então existe uma sequência $x_n \neq x_0,$ $x_n$ tendendo para $x_0$ tal que $u(x_n) = u(x_0).$ E se $n = 1$?
+
+\solucao{}
+
+\exercicio{5}
+
+Seja $\Omega$ um aberto do $\mathbb{R}^n,$ e $u$ uma função harmônica em $\Omega.$ Se $K$ é um subsconjunto compacto de $\Omega$, mostre que
+
+\[
+\sup\limits_{x \in K} \abs{u(x)} \le \frac{n}{\omega_n d(K, \partial \Omega)^n} \int\limits_\Omega \abs{u(x)} \dif x
+\]
+
+\solucao{}
+
+
+\exercicio{6}
+
+Seja $D \subset \mathbb{R}^2$ o conjunto dos pontos $(x, y)$ tais que $x^2 + y^2 < 1.$ Existe uma função contínua $u$ definida em $D$ que seja harmônica em $D$ e coincida com $2x^2$ na fronteira de $D?$ Se sim, calcule $u$ no centro de $D.$
+
+\solucao{}
+
+
+\exercicio{7} Seja $u$ uma função harmônica definida em $\mathbb{R}^3 - \{ 0 \}.$
+
+\dividiritens{
+\task[\pers{a}] Verdadeiro ou falo? Se o limite 
+\[
+\lim\limits_{x \to 0} \sqrt{\abs{x}} u(x)
+\]
+
+ então esse limite vale $0.$
+
+\task[\pers{b}] Se o limite
+\[
+\lim\limits_{x \to 0} \abs{x} u(x)
+\]
+existe e é finito, mostre que $u(x)$ é da forma
+\[
+u(x) = \frac{c}{\abs{x}} + v(x),
+\]
+onde $c$ é uma constante e $v(x)$ tem uma extensão harmônica em todo o $\mathbb{R}^3.$
+
+\task[\pers{c}]  Verdadeiro ou falso? Se $u$ é limitada em $\mathbb{R}^3 - \{0\},$ então $u$ é constante.
+}
+
+\solucao{
+\dividiritens{
+\task[\pers{a}] Falso. Aula do dia 24 de abril
+
+\task[\pers{b}] Aula do dia 24 de abril
+
+\task[\pers{c}] Aula do dia 24 de abril
+}
+}
+
+\exercicio{8} 
+
+Seja $\Omega$ o semi-espaço $x_n > 0$ do $\mathbb{R}^n$ e seja $u$ uma função contínua e limitada em $\Omega^{-}$, harmônica em $\Omega$ nula em $\partial \Omega.$ Mostre que $u$ é identicamente nula em $\overline{\Omega}.$
+
+\solucao{Aula do dia 24 de abril. Teorema do Amendoim.}
+
+\exercicio{9} 
+
+Seja  $\Omega \subseteq \mathbb{R}^2$ o primeiro quadrante $x > 0, y > 0.$ Seja $u$ uma função contínua e limitada em $\Omega^{-}$, harmônica em $\overline{\Omega}$ e nula em $\partial \Omega$. Mostre que $u$ é identicamente nua em $\overline{\Omega}.$
+
+\solucao{Aula do dia 24 de abril. Teorema do Amendoim.}
+
+
+\section{\textcolor{Floresta}{Lista 6}}
+
+\exercicio{1} Prove que, se $\Omega \subset \mathbb{R}^n$ é um aberto conexo e $u$ é harmônica não constante em $\Omega$, então $u(\Omega)$ é um intervalo.
+aberto.
+
+\solucao{}
+
+\exercicio{2} Seja $\Omega \subseteq \mathbb{R}^n$ um aberto limitado conexo tal que $\partial \Omega$ seja também conexo. Se $u$ é harmônica em $\Omega$, prove que $u(\Omega) \subset u(\partial \Omega).$
+
+\solucao{}
+
+\exercicio{3} Se $u(x)$ é harmônica em $\mathbb{R}^n$
+e existe $1 \le p < \infty$ tal que $u \in L^p(\mathbb{R}^n),$ então $u$ é identicamente nula.
+
+\textbf{Sugestão:} use a propriedade da média volumétrica e a desigualdade de Hölder.
+
+\solucao{}
+
+\exercicio{4} Prove que se $u$ é harmônica no $\mathbb{R}^n$ e $\nabla u \in L^2(\mathbb{R}^n),$ então $u$ é constante.
+
+\solucao{}
+
+\exercicio{5} Mostre que se $u$ for harmônica em $\mathbb{R}^n$ e satisfaz $u = \pd{u}{x_n} = 0$ quando $x_n = 0,$ então $u = 0.$
+\textbf{Sugestão:} mostre que $ \pd{u}{x_n}$ é uma função par e ímpar.
+\solucao{}
+
+\section{\textcolor{Floresta}{Lista 7}}
+
+
+\exercicio{1} Seja $u_m \colon \mathbb{R}^n \to \mathbb{R}$ uma sequência de funções harmônicas e suponha que exista uma função contínua $u \colon \mathbb{R}^n \to \mathbb{R}$ tal que $u_m$ converge para $u$ na norma $L^1$ em qualquer subconjunto compacto, isto é, para todo $A \subset \mathbb{R}^n$ limitado, temos
+\[\lim\limits_{m \to \infty} \left(\int\limits_{A}\abs{u_m(x) - u(x)} \dif x \right) = 0\]
+Mostre que a convergência é uniforme em conjuntos compactos e que $u$ é harmônica.
+
+\solucao{}
+
+\exercicio{2} Seja $\Omega \subset \mathbb{R}^2$ o conjunto dos pontos $x \in \mathbb{R}^2$ tais que $\abs{x} > 1.$ Seja $u \colon \Omega \to \mathbb{R}$ uma função contínua e limitada, harmônica em $\Omega$ e que se anula em $\abs{x} = 1.$ Mostre que $u$ é identicamente nula. Esse resultado vale em dimensões mais altas?
+
+\solucao{}
+\end{document}
